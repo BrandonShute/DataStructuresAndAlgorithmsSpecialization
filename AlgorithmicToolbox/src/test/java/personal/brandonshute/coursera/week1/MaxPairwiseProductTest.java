@@ -18,7 +18,7 @@ public class MaxPairwiseProductTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void when_provided_with_more_than_the_maximum_specified_numbers_then_throw_an_exception() {
-        MaxPairwiseProduct.getMaxPairwiseProduct(new int[20_001]);
+        MaxPairwiseProduct.getMaxPairwiseProduct(new int[200_001]);
     }
 
     @Test(expected = IllegalArgumentException.class)

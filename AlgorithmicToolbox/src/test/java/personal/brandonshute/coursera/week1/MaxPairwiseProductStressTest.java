@@ -20,8 +20,8 @@ public class MaxPairwiseProductStressTest {
 
     private static final int SECOND = 1000;
     private static final int TEST_RUN_TIME = 20 * SECOND;
-    private static final int MAX_ARRAY_LENGTH = 20_000;
-    private static final int MAX_VALUE = 20_000;
+    private static final int MAX_ARRAY_LENGTH = 200_000;
+    private static final int MAX_VALUE = 200_000;
 
 
     private NaiveMaxPairwiseProduct naiveMaxPairwiseProduct;
@@ -70,8 +70,10 @@ public class MaxPairwiseProductStressTest {
             long maxValue = 0;
             for (int i = 0; i < length; i++) {
                 for (int j = i + 1; j < length; j++) {
-                    if (numbers[i] * numbers[j] > maxValue) {
-                        maxValue = numbers[i] * numbers[j];
+                    final long val1 = numbers[i];
+                    final long val2 = numbers[j];
+                    if (val1 * val2 > maxValue) {
+                        maxValue = val1 * val2;
                     }
                 }
             }

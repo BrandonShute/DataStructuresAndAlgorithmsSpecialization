@@ -10,7 +10,7 @@ import java.io.*;
 public class MaxPairwiseProduct {
 
     private static final int MIN_ARRAY_SIZE = 2;
-    private static final int MAX_ARRAY_SIZE = 20_000;
+    private static final int MAX_ARRAY_SIZE = 200_000;
 
     public static long getMaxPairwiseProduct(int[] numbers) {
         if (numbers.length < MIN_ARRAY_SIZE || numbers.length > MAX_ARRAY_SIZE) {
