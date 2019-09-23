@@ -21,6 +21,11 @@ public class MaxPairwiseProductTest {
         MaxPairwiseProduct.getMaxPairwiseProduct(new int[20_001]);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void when_provided_with_an_array_with_a_negative_value_then_throw_an_exception() {
+        MaxPairwiseProduct.getMaxPairwiseProduct(new int[]{5, 4, -1});
+    }
+
     @Test
     public void when_provided_with_two_numbers_then_output_the_product_of_those_numbers() {
         assertThat(MaxPairwiseProduct.getMaxPairwiseProduct(new int[]{3, 4}), is(12L));

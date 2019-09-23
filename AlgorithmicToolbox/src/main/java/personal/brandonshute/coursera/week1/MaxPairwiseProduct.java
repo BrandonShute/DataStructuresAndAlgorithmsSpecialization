@@ -34,6 +34,9 @@ public class MaxPairwiseProduct {
         int maxValue = -1;
         int maxIndex = 0;
         for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] < 0) {
+                throw new IllegalArgumentException(String.format("Values must be non-negative but %d was received"));
+            }
             if (i != indexToIgnore && numbers[i] > maxValue) {
                 maxIndex = i;
                 maxValue = numbers[i];
