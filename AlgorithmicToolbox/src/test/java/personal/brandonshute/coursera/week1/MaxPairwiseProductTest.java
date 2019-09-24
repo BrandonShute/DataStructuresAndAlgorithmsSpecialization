@@ -12,18 +12,23 @@ import static org.junit.Assert.assertThat;
 public class MaxPairwiseProductTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void when_provided_with_less_than_two_numbers_then_throw_an_exception() {
-        MaxPairwiseProduct.getMaxPairwiseProduct(new int[]{0});
+    public void when_provided_with_less_than_minimum_specified_numbers_then_throw_an_exception() {
+        MaxPairwiseProduct.getMaxPairwiseProduct(new int[MaxPairwiseProduct.MIN_ARRAY_SIZE - 1]);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void when_provided_with_more_than_the_maximum_specified_numbers_then_throw_an_exception() {
-        MaxPairwiseProduct.getMaxPairwiseProduct(new int[200_001]);
+        MaxPairwiseProduct.getMaxPairwiseProduct(new int[MaxPairwiseProduct.MAX_ARRAY_SIZE + 1]);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void when_provided_with_an_array_with_a_negative_value_then_throw_an_exception() {
-        MaxPairwiseProduct.getMaxPairwiseProduct(new int[]{5, 4, -1});
+    public void when_provided_with_an_array_with_a_value_less_than_min_allowable_then_throw_an_exception() {
+        MaxPairwiseProduct.getMaxPairwiseProduct(new int[]{5, 4, MaxPairwiseProduct.MIN_ALLOWABLE_VALUE - 1});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void when_provided_with_an_array_with_a_value_greater_than_max_allowable_then_throw_an_exception() {
+        MaxPairwiseProduct.getMaxPairwiseProduct(new int[]{5, 4, MaxPairwiseProduct.MAX_ALLOWABLE_VALUE + 1});
     }
 
     @Test

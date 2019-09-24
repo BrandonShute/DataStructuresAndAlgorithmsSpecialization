@@ -9,8 +9,11 @@ import java.io.*;
  */
 public class MaxPairwiseProduct {
 
-    private static final int MIN_ARRAY_SIZE = 2;
-    private static final int MAX_ARRAY_SIZE = 200_000;
+    // Problem constraints
+    protected static final int MIN_ARRAY_SIZE = 2;
+    protected static final int MAX_ARRAY_SIZE = 200_000;
+    protected static final int MIN_ALLOWABLE_VALUE = 0;
+    protected static final int MAX_ALLOWABLE_VALUE = 200_000;
 
     public static long getMaxPairwiseProduct(int[] numbers) {
         if (numbers.length < MIN_ARRAY_SIZE || numbers.length > MAX_ARRAY_SIZE) {
@@ -34,7 +37,7 @@ public class MaxPairwiseProduct {
         int maxValue = -1;
         int maxIndex = 0;
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] < 0) {
+            if (numbers[i] < MIN_ALLOWABLE_VALUE || numbers[i] > MAX_ALLOWABLE_VALUE) {
                 throw new IllegalArgumentException(String.format("Values must be non-negative but %d was received"));
             }
             if (i != indexToIgnore && numbers[i] > maxValue) {

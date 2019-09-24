@@ -3,12 +3,10 @@ package personal.brandonshute.coursera.week1;
 
 import org.junit.Before;
 import org.junit.Test;
+import personal.brandonshute.coursera.Fixture;
 
 import java.util.Arrays;
-import java.util.Random;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * This implements a stress tests for the {@code MaxPairwiseProduct} class. It will run for a specified amount of time
@@ -18,28 +16,25 @@ import static org.junit.Assert.assertThat;
 // TODO:brandonshute:2019-09-22: This can be moved out of unit tests in the future to its own module (too slow)
 public class MaxPairwiseProductStressTest {
 
-    private static final int SECOND = 1000;
-    private static final int TEST_RUN_TIME = 20 * SECOND;
-    private static final int MAX_ARRAY_LENGTH = 200_000;
-    private static final int MAX_VALUE = 200_000;
-
-
     private NaiveMaxPairwiseProduct naiveMaxPairwiseProduct;
 
     @Before
     public void setup() {
-        naiveMaxPairwiseProduct = new NaiveMaxPairwiseProduct();
+        this.naiveMaxPairwiseProduct = new NaiveMaxPairwiseProduct();
     }
 
 
     @Test
     public void when_testing_against_naive_algorithm_with_random_values_then_solutions_always_match() {
         long startTime = System.currentTimeMillis();
-        while (System.currentTimeMillis() - startTime < TEST_RUN_TIME) {
-            final int[] input = initializeRandomArray(MAX_ARRAY_LENGTH, MAX_VALUE);
+        while (System.currentTimeMillis() - startTime < Fixture.DEFAULT_STRESS_TEST_RUN_TIME) {
+            final int[] input = initializeRandomArray(
+                    MaxPairwiseProduct.MIN_ARRAY_SIZE, MaxPairwiseProduct.MAX_ARRAY_SIZE,
+                    MaxPairwiseProduct.MIN_ALLOWABLE_VALUE, MaxPairwiseProduct.MAX_ALLOWABLE_VALUE
+            );
 
             final long result = MaxPairwiseProduct.getMaxPairwiseProduct(input);
-            final long naiveResult = naiveMaxPairwiseProduct.getMaxPairwiseProduct(input);
+            final long naiveResult = this.naiveMaxPairwiseProduct.getMaxPairwiseProduct(input);
             if (result != naiveResult) {
                 throw new IllegalStateException(
                         String.format("Solutions differed %d versus %d for input %s", result, naiveResult, Arrays.toString(input))
@@ -48,18 +43,13 @@ public class MaxPairwiseProductStressTest {
         }
     }
 
-    private int[] initializeRandomArray(final int maxLength, final int maxValue) {
-        final int length = getRandomInt(2, maxLength);
+    private int[] initializeRandomArray(final int minLength, final int maxLength, final int minValue, final int maxValue) {
+        final int length = Fixture.getRandomInt(minLength, maxLength);
         int[] numbers = new int[length];
         for (int i = 0; i < length; i++) {
-            numbers[i] = getRandomInt(0, maxValue);
+            numbers[i] = Fixture.getRandomInt(minValue, maxValue);
         }
         return numbers;
-    }
-
-    private int getRandomInt(final int minValue, final int maxValue) {
-        Random r = new Random();
-        return r.nextInt((maxValue - minValue) + 1) + minValue;
     }
 
     private class NaiveMaxPairwiseProduct {
