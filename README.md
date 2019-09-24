@@ -6,7 +6,7 @@ offered by the University of California San Diego on Coursera.
 
 It should be noted that these courses offer automated grading software which force your programs to read from standard 
 input and write the result to standard output and only accept a single file. For this reason, the code does not have an 
-optimal arcitecture and there is some duplication from using their resources but the purpose of this is to learn and 
+optimal architecture and there is some duplication from using their resources but the purpose of this is to learn and 
 understand more about data structures and algorithms.
 
 ### Submitting Files for grading
