@@ -9,6 +9,6 @@ input and write the result to standard output and only accept a single file. For
 optimal arcitecture and there is some duplication from using their resources but the purpose of this is to learn and 
 understand more about data structures and algorithms.
 
-###Submitting Files for grading
+### Submitting Files for grading
 1. Locally remove the `package *` or the grading system won't resolve the `main` method.
 2. Upload the local file to the grading system.
