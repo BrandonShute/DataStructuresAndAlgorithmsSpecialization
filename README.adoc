@@ -13,8 +13,7 @@ understand more about data structures and algorithms.
 
 This project is built with gradle where the root project is `DataStructuresAndAlgorithmsSpecialization`. Each course is
 treated as a sub-module of the root project and can have it's own dependency structure. Since the course will only allow
-dependencies from common java libraries, this may be overkill but was designed to be a learning experience for building
-a project in this way. For this reason, dependencies are only used for test classes.
+dependencies from common java libraries, dependencies are only used for test classes. Therefore, building the project using this framework may be overkill but was designed to be a learning experience.
 
 To work with this project, please follow the following steps::
 1. Clone the repository from Github
