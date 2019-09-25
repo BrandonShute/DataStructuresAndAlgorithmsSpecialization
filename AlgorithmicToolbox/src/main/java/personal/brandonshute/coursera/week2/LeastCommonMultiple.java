@@ -8,14 +8,16 @@ import java.util.*;
 public class LeastCommonMultiple {
 
     // Problem constraints
-    protected static final int MIN_ALLOWABLE_VALUE = 1;
+    protected static final int MIN_ALLOWABLE_VALUE = 0;
     protected static final int MAX_ALLOWABLE_VALUE = 10_000_000;
 
     public static long calculate(int a, int b) {
         validateInput(a);
         validateInput(b);
 
-        if (a == b) {
+        if (a == 0 || b == 0) {
+            return 0;
+        } else if (a == b) {
             return a;
         } else if (b % a == 0) {
             return b;

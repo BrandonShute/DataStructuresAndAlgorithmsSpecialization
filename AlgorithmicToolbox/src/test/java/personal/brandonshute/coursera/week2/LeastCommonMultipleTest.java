@@ -37,6 +37,16 @@ public class LeastCommonMultipleTest {
     }
 
     @Test
+    public void when_provided_with_first_value_as_zero_then_return_second_value() {
+        assertThat(LeastCommonMultiple.calculate(100, 0), is(0L));
+    }
+
+    @Test
+    public void when_provided_with_second_value_as_zero_then_return_zero() {
+        assertThat(LeastCommonMultiple.calculate(0, 100), is(0L));
+    }
+
+    @Test
     public void when_provided_with_first_value_as_multiple_of_second_value_then_return_second_value() {
         assertThat(LeastCommonMultiple.calculate(3, 6), is(6L));
     }
