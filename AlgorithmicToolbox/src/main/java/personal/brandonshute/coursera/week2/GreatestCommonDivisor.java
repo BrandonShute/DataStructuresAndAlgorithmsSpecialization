@@ -15,9 +15,17 @@ public class GreatestCommonDivisor {
     public static long calculate(int a, int b) {
         validateInput(a);
         validateInput(b);
+        return calculateWithoutValidation(a, b);
+    }
 
-        // TODO:brandonshute:Implement
-        return 0L;
+    private static long calculateWithoutValidation(int a, int b) {
+        if (a == 0) {
+            return b;
+        } else if (b == 0) {
+            return a;
+        }
+
+        return calculateWithoutValidation(b, a % b);
     }
 
     private static void validateInput(final int value) {
