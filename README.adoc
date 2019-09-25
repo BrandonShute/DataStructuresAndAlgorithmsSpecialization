@@ -1,0 +1,36 @@
+= Data Structures And Algorithms Specialization
+
+This is a repository to store course material for the
+https://www.coursera.org/specializations/data-structures-algorithms?ranMID=40328&ranEAID=BuGceriufQM&ranSiteID=BuGceriufQM-ZenCI7i0jjAD38V8a0bBJw&siteID=BuGceriufQM-ZenCI7i0jjAD38V8a0bBJw&utm_content=10&utm_medium=partners&utm_source=linkshare&utm_campaign=BuGceriufQM[Data Structures and Algorithms Specialization]
+offered by the University of California San Diego on Coursera.
+
+It should be noted that these courses offer automated grading software which force your programs to read from standard
+input and write the result to standard output and only accept a single file. For this reason, the code does not have an
+optimal architecture and there is some duplication from using their resources but the purpose of this is to learn and
+understand more about data structures and algorithms.
+
+== Building this project
+
+This project is built with gradle where the root project is `DataStructuresAndAlgorithmsSpecialization`. Each course is
+treated as a sub-module of the root project and can have it's own dependency structure. Since the course will only allow
+dependencies from common java libraries, this may be overkill but was designed to be a learning experience for building
+a project in this way. For this reason, dependencies are only used for test classes.
+
+To work with this project, please follow the following steps::
+1. Clone the repository from Github
+2. Run `./gradlew build`
+
+To ensure everything was built and is working correctly, you can run tests::
+1. Run unit tests: `./gradlew test`
+2. Run stress tests: `./gradlew stressTest`
+
+
+== Submitting Files for Grading
+1. Locally remove the `package *` or the grading system won't resolve the `main` method.
+2. Upload the local file to the grading system.
+
+== Additional Notes
+1. Since the purpose of this course and project is to learn about data structures and algorithms, the code does not need
+need to be production ready so following week 2, explicit input validation and testing of these cases will no longer be
+conducted. These programs will only be used in the grading software which can be assumed to follow their own specified
+constraints. In addition, stress testing may not be implemented for every class.
