@@ -1,0 +1,23 @@
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+
+    version '1.0-SNAPSHOT'
+    group = 'personal.brandonshute.coursera'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+
+        // Test dependencies
+        testCompile(group: 'junit', name: 'junit', version: '4.12')
+        testCompile(group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3')
+    }
+}
