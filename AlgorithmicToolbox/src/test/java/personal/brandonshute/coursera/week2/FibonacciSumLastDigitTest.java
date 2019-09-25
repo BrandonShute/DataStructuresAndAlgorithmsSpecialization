@@ -32,6 +32,11 @@ public class FibonacciSumLastDigitTest {
     }
 
     @Test
+    public void when_provided_with_value_that_is_multiple_of_pisano_then_then_return_zero() {
+        assertThat(FibonacciSumLastDigit.calculate(240), is(0L));
+    }
+
+    @Test
     public void when_provided_with_valid_input_then_return_correct_fibonacci_sum_last_digit_number() {
         assertThat(FibonacciSumLastDigit.calculate(2), is(2L));
         assertThat(FibonacciSumLastDigit.calculate(5), is(2L));

@@ -27,8 +27,8 @@ public class FibonacciSumLastDigit {
         }
 
         int lastValue = 0;
-        int value = 1;
-        for (int i = 2; i <= (n % MOD_10_PISANO); i++) {
+        int value = 0;
+        for (int i = 1; i <= (n % MOD_10_PISANO); i++) {
             final int lastValueTemp = value;
             value = (lastValue + value + 1) % 10;
             lastValue = lastValueTemp;
