@@ -2,14 +2,16 @@ package personal.brandonshute.coursera.week2;
 
 import java.util.*;
 
+// TODO:brandonshute:2019-09-24: Come back and implement at the end of the course (only 4/7 are required for the assignment
 public class FibonacciSumSquares {
     private static long getFibonacciSumSquaresNaive(long n) {
-        if (n <= 1)
+        if (n <= 1) {
             return n;
+        }
 
         long previous = 0;
-        long current  = 1;
-        long sum      = 1;
+        long current = 1;
+        long sum = 1;
 
         for (long i = 0; i < n - 1; ++i) {
             long tmp_previous = previous;
@@ -20,7 +22,7 @@ public class FibonacciSumSquares {
 
         return sum % 10;
     }
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long n = scanner.nextLong();

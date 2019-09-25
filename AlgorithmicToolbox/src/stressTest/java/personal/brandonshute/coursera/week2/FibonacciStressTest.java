@@ -27,7 +27,7 @@ public class FibonacciStressTest {
             final int input = Fixture.getRandomInt(Fibonacci.MIN_FIBONACCI_NUMBER, MAX_FIBONACCI_NUMBER_FOR_NAIVE_METHOD);
 
             final long result = Fibonacci.calculate(input);
-            final long naiveResult = this.naiveFibonacci.calculateFibonacci(input);
+            final long naiveResult = this.naiveFibonacci.calculate(input);
             if (result != naiveResult) {
                 throw new IllegalStateException(
                         String.format("Solutions differed %d versus %d for input %d", result, naiveResult, input)
@@ -38,11 +38,11 @@ public class FibonacciStressTest {
 
     public class NaiveFibonacci {
 
-        public long calculateFibonacci(final int n) {
+        public long calculate(final int n) {
             if (n <= 1) {
                 return n;
             }
-            return calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
+            return calculate(n - 1) + calculate(n - 2);
         }
     }
 }

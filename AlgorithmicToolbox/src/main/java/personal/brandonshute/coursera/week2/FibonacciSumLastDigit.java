@@ -2,30 +2,45 @@ package personal.brandonshute.coursera.week2;
 
 import java.util.*;
 
+/**
+ * Calculates the last digit of a sum of Fibonacci sequence.
+ */
 public class FibonacciSumLastDigit {
-    private static long getFibonacciSumNaive(long n) {
-        if (n <= 1)
-            return n;
 
-        long previous = 0;
-        long current  = 1;
-        long sum      = 1;
+    protected static final int MIN_FIBONACCI_NUMBER = 0;
 
-        for (long i = 0; i < n - 1; ++i) {
-            long tmp_previous = previous;
-            previous = current;
-            current = tmp_previous + current;
-            sum += current;
+    // Fibonacci sequence is a periodic function of a particular length for any given mod called the Pisano period
+    private static final int MOD_10_PISANO = 60;
+
+    // Problem constraints
+    protected static final long MAX_FIBONACCI_NUMBER = 100_000_000_000_000L;
+
+    public static long calculate(long n) {
+        if (n < MIN_FIBONACCI_NUMBER || n > MAX_FIBONACCI_NUMBER) {
+            throw new IllegalArgumentException(
+                    String.format("n must be between %d and %d but received: %d", MIN_FIBONACCI_NUMBER, MAX_FIBONACCI_NUMBER, n)
+            );
         }
 
-        return sum % 10;
+        if (n <= 1) {
+            return n;
+        }
+
+        int lastValue = 0;
+        int value = 1;
+        for (int i = 2; i <= (n % MOD_10_PISANO); i++) {
+            final int lastValueTemp = value;
+            value = (lastValue + value + 1) % 10;
+            lastValue = lastValueTemp;
+        }
+
+        return value;
     }
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long n = scanner.nextLong();
-        long s = getFibonacciSumNaive(n);
-        System.out.println(s);
+        System.out.println(calculate(n));
     }
 }
 

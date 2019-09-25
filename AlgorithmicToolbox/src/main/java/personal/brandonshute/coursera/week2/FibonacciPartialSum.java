@@ -2,12 +2,13 @@ package personal.brandonshute.coursera.week2;
 
 import java.util.*;
 
+// TODO:brandonshute:2019-09-24: Come back and implement at the end of the course (only 4/7 are required for the assignment
 public class FibonacciPartialSum {
     private static long getFibonacciPartialSumNaive(long from, long to) {
         long sum = 0;
 
         long current = 0;
-        long next  = 1;
+        long next = 1;
 
         for (long i = 0; i <= to; ++i) {
             if (i >= from) {
@@ -21,7 +22,7 @@ public class FibonacciPartialSum {
 
         return sum % 10;
     }
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long from = scanner.nextLong();
