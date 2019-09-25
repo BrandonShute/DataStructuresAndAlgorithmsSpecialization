@@ -6,7 +6,7 @@ import org.junit.Test;
 import personal.brandonshute.coursera.Fixture;
 
 /**
- * Stress tests for the {@code Fibonacci} class.
+ * Stress tests for the {@link Fibonacci} class.
  */
 public class FibonacciStressTest {
 
@@ -26,7 +26,7 @@ public class FibonacciStressTest {
         while (System.currentTimeMillis() - startTime < Fixture.DEFAULT_STRESS_TEST_RUN_TIME) {
             final int input = Fixture.getRandomInt(Fibonacci.MIN_FIBONACCI_NUMBER, MAX_FIBONACCI_NUMBER_FOR_NAIVE_METHOD);
 
-            final long result = Fibonacci.calculateFibonacci(input);
+            final long result = Fibonacci.calculate(input);
             final long naiveResult = this.naiveFibonacci.calculateFibonacci(input);
             if (result != naiveResult) {
                 throw new IllegalStateException(

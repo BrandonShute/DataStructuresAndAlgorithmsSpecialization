@@ -15,7 +15,7 @@ public class MaxPairwiseProduct {
     protected static final int MIN_ALLOWABLE_VALUE = 0;
     protected static final int MAX_ALLOWABLE_VALUE = 200_000;
 
-    public static long getMaxPairwiseProduct(int[] numbers) {
+    public static long calculate(int[] numbers) {
         if (numbers.length < MIN_ARRAY_SIZE || numbers.length > MAX_ARRAY_SIZE) {
             throw new IllegalArgumentException(
                     String.format("The array of numbers must be between %d and %d", MIN_ARRAY_SIZE, MAX_ARRAY_SIZE)
@@ -55,7 +55,7 @@ public class MaxPairwiseProduct {
         for (int i = 0; i < n; i++) {
             numbers[i] = scanner.nextInt();
         }
-        System.out.println(getMaxPairwiseProduct(numbers));
+        System.out.println(calculate(numbers));
     }
 
     private static class FastScanner {

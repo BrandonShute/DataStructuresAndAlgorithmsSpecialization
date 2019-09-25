@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 
 /**
- * This implements a stress tests for the {@code MaxPairwiseProduct} class. It will run for a specified amount of time
+ * This implements a stress tests for the {@link MaxPairwiseProduct} class. It will run for a specified amount of time
  * validating the algorithm against the naive implementation and throw an exception any time the two differ. Note: if 
  * any issues are found, a proper unit test should be created.
  */
@@ -33,7 +33,7 @@ public class MaxPairwiseProductStressTest {
                     MaxPairwiseProduct.MIN_ALLOWABLE_VALUE, MaxPairwiseProduct.MAX_ALLOWABLE_VALUE
             );
 
-            final long result = MaxPairwiseProduct.getMaxPairwiseProduct(input);
+            final long result = MaxPairwiseProduct.calculate(input);
             final long naiveResult = this.naiveMaxPairwiseProduct.getMaxPairwiseProduct(input);
             if (result != naiveResult) {
                 throw new IllegalStateException(

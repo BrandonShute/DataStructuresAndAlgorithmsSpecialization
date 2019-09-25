@@ -13,7 +13,7 @@ public class Fibonacci {
     protected static final int MAX_FIBONACCI_NUMBER = 45;
 
 
-    public static long calculateFibonacci(final int n) {
+    public static long calculate(final int n) {
         if (n < MIN_FIBONACCI_NUMBER || n > MAX_FIBONACCI_NUMBER) {
             throw new IllegalArgumentException(
                     String.format("n must be between %d and %d but received: %d", MIN_FIBONACCI_NUMBER, MAX_FIBONACCI_NUMBER, n)
@@ -40,6 +40,6 @@ public class Fibonacci {
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        System.out.println(calculateFibonacci(n));
+        System.out.println(calculate(n));
     }
 }

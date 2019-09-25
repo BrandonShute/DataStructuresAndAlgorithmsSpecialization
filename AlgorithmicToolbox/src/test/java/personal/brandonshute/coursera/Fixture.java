@@ -7,6 +7,9 @@ public class Fixture {
     public static final int SECOND = 1000;
     public static final int DEFAULT_STRESS_TEST_RUN_TIME = 20 * SECOND;
 
+    // Java program constraint
+    public static final double MAX_ALLOWABLE_CALCULATION_TIME = 1.5 * Fixture.SECOND;
+
     /**
      * Gets a random {@code int} between the {@code minValue} and {@code maxValue} inclusively.
      * @param minValue The minimum possible value of the int.
