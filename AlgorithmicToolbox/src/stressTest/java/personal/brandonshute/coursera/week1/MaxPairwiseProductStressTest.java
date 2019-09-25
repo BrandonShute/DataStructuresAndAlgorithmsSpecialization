@@ -13,7 +13,6 @@ import java.util.Arrays;
  * validating the algorithm against the naive implementation and throw an exception any time the two differ. Note: if 
  * any issues are found, a proper unit test should be created.
  */
-// TODO:brandonshute:2019-09-22: This can be moved out of unit tests in the future to its own module (too slow)
 public class MaxPairwiseProductStressTest {
 
     private NaiveMaxPairwiseProduct naiveMaxPairwiseProduct;

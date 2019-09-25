@@ -14,6 +14,12 @@ subprojects {
         mavenCentral()
     }
 
+    configurations {
+        stressTestImplementation.extendsFrom testImplementation
+        stressTestRuntimeOnly.extendsFrom testRuntimeOnly
+        stressTestAnnotationProcessor.extendsFrom testAnnotationProcessor
+    }
+
     dependencies {
 
         // Test dependencies

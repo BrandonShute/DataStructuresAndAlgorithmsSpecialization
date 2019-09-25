@@ -1,3 +1,30 @@
+
 dependencies {
 
+}
+
+sourceSets {
+    stressTest {
+        java {
+            compileClasspath += main.output
+            compileClasspath += main.compileClasspath
+
+            compileClasspath += test.output
+            compileClasspath += test.compileClasspath
+
+            runtimeClasspath += test.runtimeClasspath
+        }
+    }
+}
+
+idea {
+    module {
+        testSourceDirs += project.sourceSets.stressTest.java.srcDirs
+        testSourceDirs += project.sourceSets.stressTest.resources.srcDirs
+    }
+}
+
+task stressTest(type: Test) {
+    setTestClassesDirs(sourceSets.stressTest.output.getClassesDirs())
+    classpath = sourceSets.stressTest.runtimeClasspath
 }
