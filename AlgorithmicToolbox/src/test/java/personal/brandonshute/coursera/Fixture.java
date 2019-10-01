@@ -21,4 +21,35 @@ public class Fixture {
         return r.nextInt((maxValue - minValue) + 1) + minValue;
     }
 
+	/**
+	 * Initialize a random list of {@code int} values between {@code minValue} and {@code maxValue} with a size between
+	 * {@code minLength} and {@code maxLength}.
+	 *
+	 * @param minLength The minimum length of the list.
+	 * @param maxLength The maximum length of the list.
+	 * @param minValue The minimum value for any given  {@code int} in the array.
+	 * @param maxValue The maximum value for any given  {@code int} in the array.
+	 * @return A list of {@code int} with the passed specifications.
+	 */
+	public static int[] initializeRandomList(final int minLength, final int maxLength, final int minValue, final int maxValue) {
+		final int length = getRandomInt(minLength, maxLength);
+		int[] numbers = new int[length];
+		for (int i = 0; i < length; i++) {
+			numbers[i] = getRandomInt(minValue, maxValue);
+		}
+		return numbers;
+	}
+
+	/**
+	 * Initialize a random list of {@code int} values between {@code minValue} and {@code maxValue} with a length {@code length}.
+	 *
+	 * @param length The length of the list.
+	 * @param minValue The minimum value for any given  {@code int} in the array.
+	 * @param maxValue The maximum value for any given  {@code int} in the array.
+	 * @return A list of {@code int} with the passed specifications.
+	 */
+	public static int[] initializeRandomList(final int length, final int minValue, final int maxValue) {
+		return initializeRandomList(length, length, minValue, maxValue);
+	}
+
 }

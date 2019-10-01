@@ -27,7 +27,7 @@ public class MaxPairwiseProductStressTest {
     public void when_testing_against_naive_algorithm_with_random_values_then_solutions_always_match() {
         long startTime = System.currentTimeMillis();
         while (System.currentTimeMillis() - startTime < Fixture.DEFAULT_STRESS_TEST_RUN_TIME) {
-            final int[] input = initializeRandomArray(
+            final int[] input = Fixture.initializeRandomList(
                     MaxPairwiseProduct.MIN_ARRAY_SIZE, MaxPairwiseProduct.MAX_ARRAY_SIZE,
                     MaxPairwiseProduct.MIN_ALLOWABLE_VALUE, MaxPairwiseProduct.MAX_ALLOWABLE_VALUE
             );
@@ -40,15 +40,6 @@ public class MaxPairwiseProductStressTest {
                 );
             }
         }
-    }
-
-    private int[] initializeRandomArray(final int minLength, final int maxLength, final int minValue, final int maxValue) {
-        final int length = Fixture.getRandomInt(minLength, maxLength);
-        int[] numbers = new int[length];
-        for (int i = 0; i < length; i++) {
-            numbers[i] = Fixture.getRandomInt(minValue, maxValue);
-        }
-        return numbers;
     }
 
     private class NaiveMaxPairwiseProduct {
