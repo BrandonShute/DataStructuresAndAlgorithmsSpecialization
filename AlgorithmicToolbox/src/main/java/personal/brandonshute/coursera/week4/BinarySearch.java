@@ -3,20 +3,36 @@ package personal.brandonshute.coursera.week4;
 import java.io.*;
 import java.util.*;
 
+/**
+ * A simple binary search algorithm where the input array is already sorted in increasing order and a_i != a_j for all
+ * i and j in 0, 1, ..., n (Problem constraint).
+ */
 public class BinarySearch {
 
-    static int binarySearch(int[] a, int x) {
-        int left = 0, right = a.length;
-        //write your code here
+    // Problem constrains
+    final static int MAX_ARRAY_SIZE = 10_000;
 
-        return -1;
+    public static int binarySearch(final int[] array, final int valueToFind) {
+        if (array.length == 0) {
+            return -1;
+        }
+        return binarySearch(array, valueToFind, 0, array.length - 1);
     }
 
-    static int linearSearch(int[] a, int x) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == x) return i;
+    private static int binarySearch(final int[] array, final int valueToFind, final int startIndex, final int endIndex) {
+        if (endIndex < startIndex) {
+            return -1;
         }
-        return -1;
+
+        final int mid = (endIndex - startIndex) / 2 + startIndex;
+
+        if (array[mid] < valueToFind) {
+            return binarySearch(array, valueToFind, mid + 1, endIndex);
+        } else if (array[mid] > valueToFind) {
+            return binarySearch(array, valueToFind, startIndex, mid - 1);
+        }
+
+        return mid;
     }
 
     public static void main(String[] args) {
@@ -32,8 +48,7 @@ public class BinarySearch {
           b[i] = scanner.nextInt();
         }
         for (int i = 0; i < m; i++) {
-            //replace with the call to binarySearch when implemented
-            System.out.print(linearSearch(a, b[i]) + " ");
+            System.out.print(binarySearch(a, b[i]) + " ");
         }
     }
     static class FastScanner {
