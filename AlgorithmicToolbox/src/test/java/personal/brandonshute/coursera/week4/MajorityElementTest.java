@@ -1,8 +1,9 @@
 package personal.brandonshute.coursera.week4;
 
+import org.junit.Test;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import org.junit.Test;
 
 /**
  * Unit tests for the {@link MajorityElement} class.
