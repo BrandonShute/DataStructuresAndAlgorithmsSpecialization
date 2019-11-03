@@ -24,7 +24,7 @@ public class MoneyChangeTest {
 	}
 
 	@Test
-	public void when_provided_with_amount_then_return_corret_value() {
+	public void when_provided_with_amount_then_return_correct_value() {
 		assertThat(MoneyChange.getChange(12), is(3));
 		assertThat(MoneyChange.getChange(27), is(5));
 		assertThat(MoneyChange.getChange(74), is(11));
