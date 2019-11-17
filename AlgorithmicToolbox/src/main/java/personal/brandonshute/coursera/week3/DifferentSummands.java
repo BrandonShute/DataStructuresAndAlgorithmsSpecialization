@@ -12,11 +12,10 @@ import java.util.*;
 public class DifferentSummands {
 
 	// Problem constraints
-	protected static final int MIN_NUM = 1;
 	protected static final int MAX_NUM = 1_000_000_000;
 
     public static List<Integer> getOptimalSummands(final int n) {
-        List<Integer> summands = new ArrayList<Integer>();
+        List<Integer> summands = new ArrayList<>();
 
         int currentValue = 1;
         int remainingValue = n;
