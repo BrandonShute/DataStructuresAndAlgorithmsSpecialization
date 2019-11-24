@@ -79,6 +79,11 @@ public class PrimitiveCalculatorTest {
 		validateValueIsBelowAllowableTime(MAX_VALUE);
 	}
 
+	@Test
+	public void when_provided_largest_prime_under_max_value_then_return_sequence_in_allowable_time() {
+		validateValueIsBelowAllowableTime(999983);
+	}
+
 	@Test @Ignore("This test is extremely slow depending on the range being tested but was used to written because of " +
 			"a timeout failure in the grader in an attempt to isolate the case")
 	public void when_provided_with_any_possible_value_then_return_sequence_in_allowable_time() {
