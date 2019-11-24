@@ -1,5 +1,6 @@
 package personal.brandonshute.coursera.week5;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import personal.brandonshute.coursera.Fixture;
 
@@ -75,8 +76,26 @@ public class PrimitiveCalculatorTest {
 
 	@Test
 	public void when_provided_largest_value_then_return_sequence_in_allowable_time() {
+		validateValueIsBelowAllowableTime(MAX_VALUE);
+	}
+
+	@Test @Ignore("This test is extremely slow depending on the range being tested but was used to written because of " +
+			"a timeout failure in the grader in an attempt to isolate the case")
+	public void when_provided_with_any_possible_value_then_return_sequence_in_allowable_time() {
+		for (int i = MAX_VALUE - 250; i <= MAX_VALUE; i++) {
+			// Just to give us some idea of where we are in the test
+			System.out.println(String.format("On value: %d", i));
+			validateValueIsBelowAllowableTime(i);
+		}
+	}
+
+	private void validateValueIsBelowAllowableTime(final int value) {
 		long startTime = System.currentTimeMillis();
 		assertThat(PrimitiveCalculator.getOptimalSequence(MAX_VALUE).size(), greaterThan(0));
-		assertThat(System.currentTimeMillis() - startTime < Fixture.MAX_ALLOWABLE_CALCULATION_TIME, is(true));
+		assertThat(
+				String.format("%d should not be above allowable time: %d", value, Fixture.MAX_ALLOWABLE_CALCULATION_TIME),
+				System.currentTimeMillis() - startTime < Fixture.MAX_ALLOWABLE_CALCULATION_TIME,
+				is(true)
+		);
 	}
 }
