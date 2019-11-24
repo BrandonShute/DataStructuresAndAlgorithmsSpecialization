@@ -2,22 +2,30 @@ package personal.brandonshute.coursera.week5;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Primitive calculator under problem under the week 5 assignment.
  */
 public class PrimitiveCalculator {
 
-	private static final Map<Calculation, Function<Integer, Integer>> INVERSE_CALCULATION_FACTORY = Map.of(
-		Calculation.ADD_1, (value) -> value - 1,
-		Calculation.MULTIPLY_2, (value) -> value / 2,
-		Calculation.MULTIPLY_3, (value) -> value / 3
-	);
+	private static final Map<Calculation, Function<Integer, Integer>> INVERSE_CALCULATION_FACTORY = Stream.of(
+			new AbstractMap.SimpleImmutableEntry<Calculation, Function<Integer, Integer>>(
+					Calculation.ADD_1, (value) -> value - 1
+			),
+			new AbstractMap.SimpleImmutableEntry<Calculation, Function<Integer, Integer>>(
+					Calculation.MULTIPLY_2, (value) -> value / 2
+			),
+			new AbstractMap.SimpleImmutableEntry<Calculation, Function<Integer, Integer>>(
+					Calculation.MULTIPLY_3, (value) -> value / 3
+			)
+	).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 
     public static List<Integer> getOptimalSequence(final int value) {
     	if (value == 1) {
-    		return List.of(1);
+    		return Stream.of(1).collect(Collectors.toList());
 		}
 
     	// Setup initial values
@@ -34,7 +42,7 @@ public class PrimitiveCalculator {
     		final Calculation calcToApply = getValidCalculations(i).stream()
 					.map((calc) -> {
 						final Integer previousValue = INVERSE_CALCULATION_FACTORY.get(calc).apply(currentValue);
-						return Map.entry(calc, valueToNumOperations.get(previousValue));
+						return new AbstractMap.SimpleImmutableEntry<>(calc, valueToNumOperations.get(previousValue));
 					})
 					.min(Comparator.comparing(Map.Entry::getValue))
 					.get()

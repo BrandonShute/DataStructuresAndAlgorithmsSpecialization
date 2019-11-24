@@ -3,6 +3,7 @@ package personal.brandonshute.coursera.week5;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Calculates the minimum number of coins/bills required for an amount of change. This overcomes issues in the original
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
  */
 public class MoneyChangeV2 {
     
-    private static final List<Integer> coinValues = List.of(1, 3, 4);
+    private static final List<Integer> coinValues = Stream.of(1, 3, 4).collect(Collectors.toList());
 
     protected static final int MIN_CHANGE = 0;
 
