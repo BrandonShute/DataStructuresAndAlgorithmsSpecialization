@@ -6,22 +6,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Primitive calculator under problem under the week 5 assignment.
+ * Primitive calculator problem under the week 5 assignment.
  */
 public class PrimitiveCalculator {
-
-	private static final Map<Calculation, Function<Integer, Integer>> INVERSE_CALCULATION_FACTORY = Stream.of(
-			new AbstractMap.SimpleImmutableEntry<Calculation, Function<Integer, Integer>>(
-					Calculation.ADD_1, (value) -> value - 1
-			),
-			new AbstractMap.SimpleImmutableEntry<Calculation, Function<Integer, Integer>>(
-					Calculation.MULTIPLY_2, (value) -> value / 2
-			),
-			new AbstractMap.SimpleImmutableEntry<Calculation, Function<Integer, Integer>>(
-					Calculation.MULTIPLY_3, (value) -> value / 3
-			)
-	).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
 
     public static List<Integer> getOptimalSequence(final int value) {
     	if (value == 1) {
@@ -40,15 +27,14 @@ public class PrimitiveCalculator {
     	for (Integer i = 3; i <= value; i++) {
     		final Integer currentValue = i;
     		final Calculation calcToApply = getValidCalculations(i).stream()
-					.map((calc) -> {
-						final Integer previousValue = INVERSE_CALCULATION_FACTORY.get(calc).apply(currentValue);
-						return new AbstractMap.SimpleImmutableEntry<>(calc, valueToNumOperations.get(previousValue));
-					})
+					.map((calc) -> new AbstractMap.SimpleImmutableEntry<>(
+							calc, valueToNumOperations.get(calc.applyInverse(currentValue))
+					))
 					.min(Comparator.comparing(Map.Entry::getValue))
 					.get()
 					.getKey();
 
-			final Integer previousValue = INVERSE_CALCULATION_FACTORY.get(calcToApply).apply(currentValue);
+			final Integer previousValue = calcToApply.applyInverse(currentValue);
 			final Integer previousNumOperations = valueToNumOperations.get(previousValue);
 
     		valueToNumOperations.put(i, previousNumOperations + 1);
@@ -92,9 +78,19 @@ public class PrimitiveCalculator {
     }
 
     private enum Calculation {
-		MULTIPLY_3,
-		MULTIPLY_2,
-		ADD_1
+		MULTIPLY_3((value) -> value / 3),
+		MULTIPLY_2((value) -> value / 2),
+		ADD_1((value) -> value - 1);
+
+		private final Function<Integer, Integer> inverseFunction;
+
+		Calculation(final Function<Integer, Integer> inverseFunction) {
+			this.inverseFunction = inverseFunction;
+		}
+
+		private Integer applyInverse(final Integer input) {
+			return this.inverseFunction.apply(input);
+		}
 	}
 }
 
