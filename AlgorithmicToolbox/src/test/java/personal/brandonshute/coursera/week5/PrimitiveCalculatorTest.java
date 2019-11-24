@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 public class PrimitiveCalculatorTest {
 
 	// Problem constrains
-	final static int MAX_VALUE = 100_000;
+	final static int MAX_VALUE = 1_000_000;
 
 	@Test
 	public void when_provided_with_one_then_return_sequence_containing_one() {
@@ -74,7 +74,7 @@ public class PrimitiveCalculatorTest {
 	}
 
 	@Test
-	public void when_provided_large_list_without_element_then_return_negative_one_in_allowable_time() {
+	public void when_provided_largest_value_then_return_sequence_in_allowable_time() {
 		long startTime = System.currentTimeMillis();
 		assertThat(PrimitiveCalculator.getOptimalSequence(MAX_VALUE).size(), greaterThan(0));
 		assertThat(System.currentTimeMillis() - startTime < Fixture.MAX_ALLOWABLE_CALCULATION_TIME, is(true));

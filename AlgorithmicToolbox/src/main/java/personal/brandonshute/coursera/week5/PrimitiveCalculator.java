@@ -31,7 +31,7 @@ public class PrimitiveCalculator {
 							calc, valueToNumOperations.get(calc.applyInverse(currentValue))
 					))
 					.min(Comparator.comparing(Map.Entry::getValue))
-					.get()
+					.orElseThrow(() -> new IllegalStateException(String.format("No calculations were found to be valid for %d", currentValue)))
 					.getKey();
 
 			final Integer previousValue = calcToApply.applyInverse(currentValue);
