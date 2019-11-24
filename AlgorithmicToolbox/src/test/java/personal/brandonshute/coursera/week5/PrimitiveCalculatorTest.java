@@ -98,7 +98,7 @@ public class PrimitiveCalculatorTest {
 		long startTime = System.currentTimeMillis();
 		assertThat(PrimitiveCalculator.getOptimalSequence(MAX_VALUE).size(), greaterThan(0));
 		assertThat(
-				String.format("%d should not be above allowable time: %d", value, Fixture.MAX_ALLOWABLE_CALCULATION_TIME),
+				String.format("%d should not be above allowable time: %f", value, Fixture.MAX_ALLOWABLE_CALCULATION_TIME),
 				System.currentTimeMillis() - startTime < Fixture.MAX_ALLOWABLE_CALCULATION_TIME,
 				is(true)
 		);
