@@ -17,11 +17,11 @@ class EditDistance {
 				final int index1 = i;
 				final int index2 = j;
 				// This is one less because the matrix starts with no letter case
-				final int indexOfString1 = i - 1;
+				final int indexOfString1 = index1 - 1;
 				final int indexOfString2 = index2 - 1;
 
 				 editDistanceMatrix[i][j] = getAllowableOperations(string1.charAt(indexOfString1), string2.charAt(indexOfString2))
-						 .map(opt -> getLastValue(opt, index1, index2, editDistanceMatrix) + opt.getCost())
+						 .map(opt -> getValue(opt, index1, index2, editDistanceMatrix))
 						 .min(Comparator.comparingInt(Integer::intValue))
 						 .orElseThrow(() -> new IllegalStateException(String.format(
 						 		"Stream is empty, no operation must have been found for index %d and %d for input string %s and %s",
@@ -55,15 +55,15 @@ class EditDistance {
 		}
 	}
 
-	private static int getLastValue(final EditOperation operation, final int currentRow, final int currentColumn, final int[][] editDistanceMatrix) {
+	private static int getValue(final EditOperation operation, final int currentRow, final int currentColumn, final int[][] editDistanceMatrix) {
 		switch (operation) {
 			case MATCH:
 			case SUBSTITUTION:
-				return editDistanceMatrix[currentRow - 1][currentColumn - 1];
+				return editDistanceMatrix[currentRow - 1][currentColumn - 1] + operation.getCost();
 			case INSERTION:
-				return editDistanceMatrix[currentRow - 1][currentColumn];
+				return editDistanceMatrix[currentRow - 1][currentColumn] + operation.getCost();
 			case DELETION:
-				return editDistanceMatrix[currentRow][currentColumn - 1];
+				return editDistanceMatrix[currentRow][currentColumn - 1] + operation.getCost();
 			default:
 				throw new IllegalArgumentException(String.format("Unknown edit operation type: %s", operation.toString()));
 		}
