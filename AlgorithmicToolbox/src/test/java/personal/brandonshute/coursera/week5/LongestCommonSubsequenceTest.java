@@ -12,8 +12,8 @@ import static org.junit.Assert.assertThat;
 public class LongestCommonSubsequenceTest {
 
     private static final int MAX_SIZE = 100;
-    private static final int MIN_ELEMENT_SIZE = -1_000_000_00;
-    private static final int MAX_ELEMENT_SIZE = 1_000_000_00;
+    private static final int MIN_ELEMENT_SIZE = -1_000_000_000;
+    private static final int MAX_ELEMENT_SIZE = 1_000_000_000;
 
     @Test
     public void when_provided_two_do_different_sequences_of_size_one_return_zero() {
