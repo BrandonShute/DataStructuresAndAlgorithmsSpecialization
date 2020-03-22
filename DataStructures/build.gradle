@@ -13,15 +13,3 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
-idea {
-    module {
-        testSourceDirs += project.sourceSets.stressTest.java.srcDirs
-        testSourceDirs += project.sourceSets.stressTest.resources.srcDirs
-    }
-}
-
-task stressTest(type: Test) {
-    setTestClassesDirs(sourceSets.stressTest.output.getClassesDirs())
-    classpath = sourceSets.stressTest.runtimeClasspath
-}
