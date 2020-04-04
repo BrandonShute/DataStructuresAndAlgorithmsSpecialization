@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Unit tests for the {@link CodeTextTest} class
+ * Unit tests for the {@link CodeText} class
  */
 public class CodeTextTest {
 
